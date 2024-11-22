@@ -13,7 +13,7 @@ public class DebugMenu  {
         Folder folder = new Folder(".");
         folderSO.SetFolder(folder);
         
-        PopulateFolderRandomly(folder, 5, "");
+        PopulateFolderRandomly(folder, 3, "");
         EditorUtility.SetDirty(folderSO);
         AssetDatabase.SaveAssets();
     }
@@ -22,14 +22,14 @@ public class DebugMenu  {
         if (maxDepth <= 0)
             return;
 
-        const int MAX_FILES_PER_FOLDER = 50000;
+        const int MAX_FILES_PER_FOLDER = 10;
         const string FILE_NAME_PREFIX = "File";
         int numFiles = Random.Range(1, MAX_FILES_PER_FOLDER); 
         for (int i = 0; i < numFiles; i++) {
             folder.AddFile($"{pathPrefix}/{FILE_NAME_PREFIX}_{i + 1}.txt");
         }
 
-        const int MAX_SUB_FOLDERS = 5;
+        const int MAX_SUB_FOLDERS = 3;
         int numSubFolders = Random.Range(1, MAX_SUB_FOLDERS); 
         for (int i = 0; i < numSubFolders; i++) {
             string subFolderName = $"SubFolder_{i + 1}";
